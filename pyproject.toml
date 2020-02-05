@@ -17,6 +17,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.7"
 click = "^7.0"
+email_validator = "^1.0.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3.5"

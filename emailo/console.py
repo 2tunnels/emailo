@@ -1,4 +1,6 @@
 import click
+from email_validator import EmailNotValidError, validate_email
+
 from emailo.utils import parse_emails
 
 
@@ -15,6 +17,10 @@ def parse(file: str) -> None:
     with open(file, mode="r", encoding="utf-8") as f:
         for line in f:
             for email in parse_emails(line):
-                print(email)
+                try:
+                    email = validate_email(email, check_deliverability=False)["email"]
+                    click.echo(email)
+                except EmailNotValidError:
+                    pass
 
     click.echo("Hello, world!")
