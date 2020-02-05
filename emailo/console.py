@@ -26,7 +26,7 @@ def parse(file: str) -> None:
 @app.command()
 @click.argument("file", type=click.Path(exists=True))
 def domains(file: str) -> None:
-    counter = Counter()
+    counter: Counter = Counter()
     max_domain_length = 0
 
     with open(file, mode="r", encoding="utf-8") as f:
