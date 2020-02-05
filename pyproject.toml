@@ -11,6 +11,10 @@ click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3.5"
+mypy = "^0.761"
+isort = "^4.3.21"
+black = "^19.10b0"
+flake8 = "^3.7.9"
 
 [tool.poetry.scripts]
 emailo = "emailo.console:app"
