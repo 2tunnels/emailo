@@ -5,6 +5,10 @@ def test_parse_emails_empty() -> None:
     assert parse_emails("Hello, world!") == []
 
 
+def test_parse_emails_invalid() -> None:
+    assert parse_emails("john.@example.com") == []
+
+
 def test_parse_emails_single() -> None:
     assert parse_emails("john@example.com") == ["john@example.com"]
 
