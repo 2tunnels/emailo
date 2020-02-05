@@ -1,12 +1,22 @@
 language: python
+
 python:
   - "3.7"
   - "3.8"
+  - "3.8-dev"
+  - "nightly"
+
 install:
   - pip install -U pip setuptools
   - pip install poetry
   - poetry config virtualenvs.create false
   - poetry install
+
 script:
   - make test
   - make lint
+
+jobs:
+  allow_failures:
+  - python: "3.8-dev"
+  - python: "nightly"
