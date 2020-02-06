@@ -372,8 +372,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools"]
 
 [metadata]
-content-hash = "b50421cdd7b0830736e47b0113e381e358e1f3a73cabe8967fb1f4a8dafe054d"
-python-versions = "^3.7"
+content-hash = "8532287871a63eb7dbc404e66c9f8d35edf52bd6c9e8fd7e34be8fa2a7196fbc"
+python-versions = "^3.6"
 
 [metadata.files]
 appdirs = [
