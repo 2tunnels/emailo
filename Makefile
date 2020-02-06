@@ -1,5 +1,5 @@
 test:
-	pytest -vv
+	pytest -vv --cov=emailo
 
 format:
 	isort -rc .
