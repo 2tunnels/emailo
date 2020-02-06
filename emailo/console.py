@@ -1,4 +1,5 @@
 from collections import Counter
+from typing import Optional
 
 import click
 
@@ -12,15 +13,17 @@ def app() -> None:
 
 @app.command()
 @click.argument("file", type=click.Path(exists=True))
-def parse(file: str) -> None:
+@click.option("--endswith", type=str)
+def parse(file: str, endswith: Optional[str]) -> None:
     """Parse given file for emails."""
 
     with open(file, mode="r", encoding="utf-8") as f:
         for line in f:
             for email in parse_emails(line):
-                click.echo(email)
+                if endswith and not email.endswith(endswith):
+                    continue
 
-    click.echo("Hello, world!")
+                click.echo(email)
 
 
 @app.command()

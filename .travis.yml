@@ -15,8 +15,9 @@ install:
 script:
   - make test
   - make lint
+  - bash <(curl -s https://codecov.io/bash)
 
 jobs:
   allow_failures:
-  - python: "3.8-dev"
-  - python: "nightly"
+    - python: "3.8-dev"
+    - python: "nightly"
