@@ -64,3 +64,16 @@ def test_domains() -> None:
 
         assert result.exit_code == 0
         assert result.output == "gmail.com   2\nhotmail.com 1\n"
+
+
+def test_domains_percentage() -> None:
+    with runner.isolated_filesystem():
+        with open("emails.txt", mode="w", encoding="utf-8") as f:
+            f.write("john@gmail.com\n")
+            f.write("bill@gmail.com\n")
+            f.write("alex@hotmail.com\n")
+
+        result = runner.invoke(app, ["domains", "emails.txt", "--percentage"])
+
+        assert result.exit_code == 0
+        assert result.output == "gmail.com   66.67%\nhotmail.com 33.33%\n"

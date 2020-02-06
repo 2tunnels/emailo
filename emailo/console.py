@@ -28,9 +28,11 @@ def parse(file: str, endswith: Optional[str]) -> None:
 
 @app.command()
 @click.argument("file", type=click.Path(exists=True))
-def domains(file: str) -> None:
+@click.option("--percentage", is_flag=True)
+def domains(file: str, percentage: bool = False) -> None:
     counter: Counter = Counter()
     max_domain_length = 0
+    total = 0
 
     with open(file, mode="r", encoding="utf-8") as f:
         for line in f:
@@ -41,9 +43,15 @@ def domains(file: str) -> None:
                 max_domain_length = domain_length
 
             counter[domain] += 1
+            total += 1
 
     for domain, count in sorted(
         counter.items(), key=lambda items: items[1], reverse=True
     ):
         formatted_domain = domain.ljust(max_domain_length)
-        click.echo(f"{formatted_domain} {count}")
+
+        if percentage:
+            p = count / total * 100
+            click.echo(f"{formatted_domain} {p:.2f}%")
+        else:
+            click.echo(f"{formatted_domain} {count}")
